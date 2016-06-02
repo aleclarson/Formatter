@@ -63,6 +63,7 @@ type.defineMethods({
       options.colors = this._colors;
     }
     parts = Formatting(options);
+    assertType(parts, Formatting);
     if (label) {
       parts.push(label);
     }

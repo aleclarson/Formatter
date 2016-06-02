@@ -31,7 +31,7 @@ module.exports = formatObject = function(obj, isCollapsed) {
   if (type !== PureObject) {
     formatType.call(this, obj, type);
   }
-  if (!hasKeys(obj)) {
+  if (!(this.showHidden || hasKeys(obj))) {
     this.push("green.dim", type === Array ? "[]" : "{}");
     return;
   }
@@ -43,13 +43,7 @@ module.exports = formatObject = function(obj, isCollapsed) {
   if (isCollapsed) {
     this.push("cyan", " ... ");
   } else {
-    this.push(this.compact ? " " : this.ln);
-    this.depth += 1;
     formatKeys.call(this, obj, maxKeys);
-    this.depth -= 1;
-    if (this.compact) {
-      this.push(" ");
-    }
   }
   return this.push("green.dim", type === Array ? "]" : "}");
 };
@@ -112,6 +106,8 @@ formatKeys = function(obj, maxKeys) {
   }
   this.objects.push(obj);
   this.keyPaths.push(this.keyPath);
+  this.push(this.compact ? " " : this.ln);
+  this.depth += 1;
   ref = keys._keys;
   for (index = i = 0, len = ref.length; i < len; index = ++i) {
     key = ref[index];
@@ -134,6 +130,11 @@ formatKeys = function(obj, maxKeys) {
       this.push(this.ln);
     }
   }
+  this.depth -= 1;
+  if (this.compact) {
+    this.push(" ");
+  }
+  return true;
 };
 
 formatKey = function(obj, key) {

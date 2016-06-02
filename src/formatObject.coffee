@@ -19,7 +19,7 @@ formatObject = (obj, isCollapsed = no) ->
   if type isnt PureObject
     formatType.call this, obj, type
 
-  if not hasKeys obj
+  unless @showHidden or hasKeys obj
     @push "green.dim", if type is Array then "[]" else "{}"
     return
 
@@ -33,11 +33,7 @@ formatObject = (obj, isCollapsed = no) ->
   if isCollapsed
     @push "cyan", " ... "
   else
-    @push if @compact then " " else @ln
-    @depth += 1
     formatKeys.call this, obj, maxKeys
-    @depth -= 1
-    @push " " if @compact
 
   @push "green.dim", if type is Array then "]" else "}"
 
@@ -79,7 +75,8 @@ formatKeys = (obj, maxKeys) ->
   if isRoot and @showHidden
     keys = KeyMirror Object.getOwnPropertyNames obj
     keys._remove "prototype", "constructor"
-  else keys = KeyMirror Object.keys obj
+  else
+    keys = KeyMirror Object.keys obj
 
   if isRoot and @showInherited
     inherited = findInherited.call this, obj
@@ -106,6 +103,9 @@ formatKeys = (obj, maxKeys) ->
   @objects.push obj
   @keyPaths.push @keyPath
 
+  @push if @compact then " " else @ln
+  @depth += 1
+
   for key, index in keys._keys
     formatKey.call this, obj, key
     if not @compact
@@ -121,7 +121,10 @@ formatKeys = (obj, maxKeys) ->
     formatInherited.call this, inherited.values
     @push @ln if not @compact
 
-  return
+  @depth -= 1
+  @push " " if @compact
+
+  return yes
 
 formatKey = (obj, key) ->
 
