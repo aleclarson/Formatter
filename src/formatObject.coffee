@@ -9,6 +9,7 @@ getType = require "getType"
 isType = require "isType"
 Kind = require "Kind"
 Type = require "Type"
+has = require "has"
 
 formatValue = require "./formatValue"
 

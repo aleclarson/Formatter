@@ -1,4 +1,4 @@
-var KeyMirror, Kind, PureObject, Type, Validator, assertType, findInherited, formatDuplicate, formatInherited, formatKey, formatKeys, formatObject, formatType, formatValue, getKind, getType, hasKeys, isType;
+var KeyMirror, Kind, PureObject, Type, Validator, assertType, findInherited, formatDuplicate, formatInherited, formatKey, formatKeys, formatObject, formatType, formatValue, getKind, getType, has, hasKeys, isType;
 
 PureObject = require("PureObject");
 
@@ -19,6 +19,8 @@ isType = require("isType");
 Kind = require("Kind");
 
 Type = require("Type");
+
+has = require("has");
 
 formatValue = require("./formatValue");
 
