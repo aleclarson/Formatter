@@ -2,7 +2,7 @@
 { throwFailure } = require "failure"
 
 assertType = require "assertType"
-getArgProp = require "getArgProp"
+fromArgs = require "fromArgs"
 Validator = require "Validator"
 Tracer = require "tracer"
 isType = require "isType"
@@ -23,7 +23,7 @@ type.optionTypes =
 
 type.defineValues
 
-  _colors: getArgProp "colors"
+  _colors: fromArgs "colors"
 
   _tracer: null
 
