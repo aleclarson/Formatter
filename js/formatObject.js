@@ -233,4 +233,4 @@ formatDuplicate = function(obj) {
   return true;
 };
 
-//# sourceMappingURL=../../map/src/formatObject.map
+//# sourceMappingURL=map/formatObject.map

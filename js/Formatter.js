@@ -1,10 +1,10 @@
-var Formatting, Tracer, Type, Validator, assertType, formatObject, formatValue, getArgProp, isType, steal, throwFailure, type;
+var Formatting, Tracer, Type, Validator, assertType, formatObject, formatValue, fromArgs, isType, steal, throwFailure, type;
 
 throwFailure = require("failure").throwFailure;
 
 assertType = require("assertType");
 
-getArgProp = require("getArgProp");
+fromArgs = require("fromArgs");
 
 Validator = require("Validator");
 
@@ -43,7 +43,7 @@ type.optionTypes = {
 };
 
 type.defineValues({
-  _colors: getArgProp("colors"),
+  _colors: fromArgs("colors"),
   _tracer: null
 });
 
@@ -63,7 +63,6 @@ type.defineMethods({
       options.colors = this._colors;
     }
     parts = Formatting(options);
-    assertType(parts, Formatting);
     if (label) {
       parts.push(label);
     }
@@ -80,4 +79,4 @@ type.defineMethods({
 
 module.exports = type.build();
 
-//# sourceMappingURL=../../map/src/Formatter.map
+//# sourceMappingURL=map/Formatter.map

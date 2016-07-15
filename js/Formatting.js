@@ -137,4 +137,4 @@ type.defineMethods({
 
 module.exports = type.build();
 
-//# sourceMappingURL=../../map/src/Formatting.map
+//# sourceMappingURL=map/Formatting.map
