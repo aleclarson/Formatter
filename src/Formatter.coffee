@@ -18,8 +18,8 @@ type = Type "Formatter", (value, options = {}) ->
   try @_format value, options
   catch error then throwFailure error, stack: @_tracer()
 
-type.optionTypes =
-  colors: Object.Maybe
+type.defineOptions
+  colors: Object
 
 type.defineValues
 

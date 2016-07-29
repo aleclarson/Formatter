@@ -39,12 +39,12 @@ type.createInstance ->
     types: propTypes
     values: propDefaults
 
-type.optionTypes =
-  colors: [ Boolean, Object.Maybe ]
-  compact: Boolean.Maybe
-  collapse: Function.Maybe
-  unlimited: Boolean.Maybe
-  avoidGetters: Boolean.Maybe
+type.defineOptions
+  colors: [ Boolean, Object ]
+  compact: Boolean
+  collapse: Function
+  unlimited: Boolean
+  avoidGetters: Boolean
 
 type.defineValues
 

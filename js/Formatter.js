@@ -38,9 +38,9 @@ type = Type("Formatter", function(value, options) {
   }
 });
 
-type.optionTypes = {
-  colors: Object.Maybe
-};
+type.defineOptions({
+  colors: Object
+});
 
 type.defineValues({
   _colors: fromArgs("colors"),
