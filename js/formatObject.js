@@ -30,7 +30,7 @@ module.exports = formatObject = function(obj, isCollapsed) {
     isCollapsed = false;
   }
   type = getType(obj);
-  if (type !== PureObject) {
+  if (type && type !== PureObject) {
     formatType.call(this, obj, type);
   }
   if (!(this.showHidden || hasKeys(obj))) {

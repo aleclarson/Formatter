@@ -17,7 +17,7 @@ module.exports =
 formatObject = (obj, isCollapsed = no) ->
 
   type = getType obj
-  if type isnt PureObject
+  if type and type isnt PureObject
     formatType.call this, obj, type
 
   unless @showHidden or hasKeys obj
