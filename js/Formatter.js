@@ -1,10 +1,6 @@
-var Formatting, Tracer, Type, Validator, assertType, formatObject, formatValue, fromArgs, isType, steal, throwFailure, type;
-
-throwFailure = require("failure").throwFailure;
+var Formatting, Tracer, Type, Validator, assertType, formatObject, formatValue, isType, steal, type;
 
 assertType = require("assertType");
-
-fromArgs = require("fromArgs");
 
 Validator = require("Validator");
 
@@ -24,9 +20,6 @@ Formatting = require("./Formatting");
 
 type = Type("Formatter", function(value, options) {
   var error;
-  if (options == null) {
-    options = {};
-  }
   this._tracer = Tracer("Formatter::call()");
   try {
     return this._format(value, options);
@@ -42,14 +35,19 @@ type.defineOptions({
   colors: Object
 });
 
-type.defineValues({
-  _colors: fromArgs("colors"),
-  _tracer: null
+type.defineValues(function(options) {
+  return {
+    _colors: options.colors,
+    _tracer: null
+  };
 });
 
 type.defineMethods({
   _format: function(value, options) {
     var label, parts, raw;
+    if (options == null) {
+      options = {};
+    }
     if (isType(options, String)) {
       options = {
         label: options

@@ -40,7 +40,7 @@ type.createInstance ->
     values: propDefaults
 
 type.defineOptions
-  colors: [ Boolean, Object ]
+  colors: Boolean.or Object
   compact: Boolean
   collapse: Function
   unlimited: Boolean

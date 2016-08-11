@@ -54,7 +54,7 @@ type.createInstance(function() {
 });
 
 type.defineOptions({
-  colors: [Boolean, Object],
+  colors: Boolean.or(Object),
   compact: Boolean,
   collapse: Function,
   unlimited: Boolean,

@@ -1,8 +1,5 @@
 
-{ throwFailure } = require "failure"
-
 assertType = require "assertType"
-fromArgs = require "fromArgs"
 Validator = require "Validator"
 Tracer = require "tracer"
 isType = require "isType"
@@ -13,7 +10,7 @@ formatObject = require "./formatObject"
 formatValue = require "./formatValue"
 Formatting = require "./Formatting"
 
-type = Type "Formatter", (value, options = {}) ->
+type = Type "Formatter", (value, options) ->
   @_tracer = Tracer "Formatter::call()"
   try @_format value, options
   catch error then throwFailure error, stack: @_tracer()
@@ -21,15 +18,15 @@ type = Type "Formatter", (value, options = {}) ->
 type.defineOptions
   colors: Object
 
-type.defineValues
+type.defineValues (options) ->
 
-  _colors: fromArgs "colors"
+  _colors: options.colors
 
   _tracer: null
 
 type.defineMethods
 
-  _format: (value, options) ->
+  _format: (value, options = {}) ->
 
     if isType options, String
       options = { label: options }
