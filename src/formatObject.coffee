@@ -7,7 +7,6 @@ hasKeys = require "hasKeys"
 getKind = require "getKind"
 getType = require "getType"
 isType = require "isType"
-Kind = require "Kind"
 Type = require "Type"
 has = require "has"
 
@@ -40,7 +39,7 @@ formatObject = (obj, isCollapsed = no) ->
 
 formatType = (obj, type) ->
 
-  assertType type, [ Function.Kind, Kind(Validator) ]
+  assertType type, Function.Kind.or Validator.Kind
 
   name = type.getName()
 

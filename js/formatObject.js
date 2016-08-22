@@ -1,4 +1,4 @@
-var KeyMirror, Kind, PureObject, Type, Validator, assertType, findInherited, formatDuplicate, formatInherited, formatKey, formatKeys, formatObject, formatType, formatValue, getKind, getType, has, hasKeys, isType;
+var KeyMirror, PureObject, Type, Validator, assertType, findInherited, formatDuplicate, formatInherited, formatKey, formatKeys, formatObject, formatType, formatValue, getKind, getType, has, hasKeys, isType;
 
 PureObject = require("PureObject");
 
@@ -15,8 +15,6 @@ getKind = require("getKind");
 getType = require("getType");
 
 isType = require("isType");
-
-Kind = require("Kind");
 
 Type = require("Type");
 
@@ -52,7 +50,7 @@ module.exports = formatObject = function(obj, isCollapsed) {
 
 formatType = function(obj, type) {
   var name, objName, regex;
-  assertType(type, [Function.Kind, Kind(Validator)]);
+  assertType(type, Function.Kind.or(Validator.Kind));
   name = type.getName();
   if (obj === type.prototype) {
     if (!name) {

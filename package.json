@@ -3,8 +3,7 @@
   "version": "1.0.1",
   "main": "js/Formatter",
   "dependencies": {
-    "Kind": "aleclarson/Kind#1.0.0",
-    "Nan": "aleclarson/Nan#1.0.0",
+    "Nan": "aleclarson/Nan#1.1.0",
     "Null": "aleclarson/Null#1.0.0",
     "PureObject": "aleclarson/PureObject#1.0.0",
     "StrictMap": "aleclarson/StrictMap#1.0.0",
