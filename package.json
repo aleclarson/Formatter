@@ -24,8 +24,7 @@
     "replace": "aleclarson/replace#1.0.0",
     "steal": "aleclarson/steal#1.1.0",
     "strip-ansi": "3.0.x",
-    "sync": "aleclarson/sync#1.0.0",
-    "tracer": "aleclarson/tracer#1.0.0"
+    "sync": "aleclarson/sync#1.0.0"
   },
   "lotus": {
     "plugins": [
