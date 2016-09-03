@@ -8,7 +8,16 @@ formatObject = require "./formatObject"
 formatValue = require "./formatValue"
 Formatting = require "./Formatting"
 
-type = Type "Formatter", (value, options = {}) ->
+type = Type "Formatter"
+
+type.defineOptions
+  colors: Object
+
+type.defineValues (options) ->
+
+  _colors: options.colors
+
+type.defineFunction (value, options = {}) ->
 
   if isType options, String
     options = { label: options }
@@ -31,12 +40,5 @@ type = Type "Formatter", (value, options = {}) ->
   parts = parts.flush()
   return parts if raw
   return parts.join ""
-
-type.defineOptions
-  colors: Object
-
-type.defineValues (options) ->
-
-  _colors: options.colors
 
 module.exports = type.build()

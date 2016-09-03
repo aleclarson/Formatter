@@ -14,7 +14,19 @@ formatValue = require("./formatValue");
 
 Formatting = require("./Formatting");
 
-type = Type("Formatter", function(value, options) {
+type = Type("Formatter");
+
+type.defineOptions({
+  colors: Object
+});
+
+type.defineValues(function(options) {
+  return {
+    _colors: options.colors
+  };
+});
+
+type.defineFunction(function(value, options) {
   var label, parts, raw;
   if (options == null) {
     options = {};
@@ -43,16 +55,6 @@ type = Type("Formatter", function(value, options) {
     return parts;
   }
   return parts.join("");
-});
-
-type.defineOptions({
-  colors: Object
-});
-
-type.defineValues(function(options) {
-  return {
-    _colors: options.colors
-  };
 });
 
 module.exports = type.build();
