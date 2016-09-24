@@ -1,10 +1,9 @@
 
-require "isNodeJS"
-
 emptyFunction = require "emptyFunction"
 repeatString = require "repeat-string"
 assertType = require "assertType"
 StrictMap = require "StrictMap"
+isNodeJS = require "isNodeJS"
 replace = require "replace"
 isType = require "isType"
 assert = require "assert"
