@@ -29,7 +29,7 @@
     "keymirror": "aleclarson/keymirror#1.0.0",
     "repeat-string": "aleclarson/repeat-string#1.5.4",
     "replace": "aleclarson/replace#1.0.0",
-    "steal": "aleclarson/steal#1.1.0",
+    "steal": "aleclarson/steal#1.2.0",
     "strip-ansi": "3.0.x",
     "sync": "aleclarson/sync#1.0.0"
   },
