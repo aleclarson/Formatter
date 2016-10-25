@@ -15,7 +15,7 @@
     "PureObject": "aleclarson/PureObject#1.0.0",
     "StrictMap": "aleclarson/StrictMap#1.0.0",
     "Type": "aleclarson/Type#1.1.0",
-    "Validator": "aleclarson/Validator#1.1.0",
+    "Validator": "aleclarson/Validator#1.1.1",
     "Void": "aleclarson/Void#1.0.0",
     "assert": "aleclarson/assert#1.0.0",
     "assertType": "aleclarson/assertType#2.0.0",
