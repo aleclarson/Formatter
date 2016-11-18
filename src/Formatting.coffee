@@ -6,7 +6,6 @@ StrictMap = require "StrictMap"
 isNodeJS = require "isNodeJS"
 replace = require "replace"
 isType = require "isType"
-assert = require "assert"
 steal = require "steal"
 Type = require "Type"
 sync = require "sync"
@@ -84,7 +83,8 @@ type.initInstance (options) ->
     options.maxArrayKeys = Infinity
 
   for key, value of options
-    assert propTypes[key], "'" + key + "' is not a valid key!"
+    unless propTypes[key]
+      throw Error "'#{key}' is not a valid key!"
     this[key] = value
   return
 
