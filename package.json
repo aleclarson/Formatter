@@ -1,41 +1,38 @@
 {
   "name": "Formatter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "js/Formatter",
+  "plugins": [
+    "lotus-coffee"
+  ],
+  "scripts": {
+    "build": "coffee-build -v 1.11.x -b -o js src",
+    "postinstall": "npm run build"
+  },
   "dependencies": {
-    "Kind": "aleclarson/Kind#1.0.0",
-    "Nan": "aleclarson/Nan#1.0.0",
-    "Null": "aleclarson/Null#1.0.0",
-    "PureObject": "aleclarson/PureObject#1.0.0",
-    "StrictMap": "aleclarson/StrictMap#1.0.0",
-    "Type": "aleclarson/Type#1.1.0",
-    "Validator": "aleclarson/Validator#1.1.0",
-    "Void": "aleclarson/Void#1.0.0",
-    "assert": "aleclarson/assert#1.0.0",
-    "assertType": "aleclarson/assertType#2.0.0",
+    "Nan": "aleclarson/Nan#1.1.1",
+    "Null": "aleclarson/Null#1.0.1",
+    "PureObject": "aleclarson/PureObject#1.0.1",
+    "StrictMap": "aleclarson/StrictMap#1.0.2",
+    "Type": "aleclarson/Type#2.2.0",
+    "Validator": "aleclarson/Validator#1.1.1",
+    "Void": "aleclarson/Void#1.0.1",
+    "assertType": "aleclarson/assertType#2.0.1",
     "emptyFunction": "aleclarson/emptyFunction#1.0.0",
-    "failure": "aleclarson/failure#1.0.0",
-    "fromArgs": "aleclarson/fromArgs#1.0.0",
     "getKind": "aleclarson/getKind#1.0.0",
-    "getType": "aleclarson/getType#1.0.0",
+    "getType": "aleclarson/getType#1.0.1",
     "has": "aleclarson/has#1.0.0",
     "hasKeys": "aleclarson/hasKeys#1.0.0",
-    "isNodeJS": "aleclarson/isNodeJS#1.0.0",
-    "isType": "aleclarson/isType#1.0.0",
+    "isNodeJS": "aleclarson/isNodeJS#2.0.0",
+    "isType": "aleclarson/isType#1.0.1",
     "keymirror": "aleclarson/keymirror#1.0.0",
     "repeat-string": "aleclarson/repeat-string#1.5.4",
     "replace": "aleclarson/replace#1.0.0",
-    "steal": "aleclarson/steal#1.1.0",
+    "steal": "aleclarson/steal#1.2.0",
     "strip-ansi": "3.0.x",
-    "sync": "aleclarson/sync#1.0.0",
-    "tracer": "aleclarson/tracer#1.0.0"
+    "sync": "aleclarson/sync#1.0.1"
   },
-  "lotus": {
-    "plugins": [
-      "lotus-coffee"
-    ],
-    "implicitDependencies": [
-      "os"
-    ]
-  }
+  "implicitDependencies": [
+    "os"
+  ]
 }

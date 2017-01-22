@@ -1,10 +1,5 @@
 
-{ throwFailure } = require "failure"
-
 assertType = require "assertType"
-fromArgs = require "fromArgs"
-Validator = require "Validator"
-Tracer = require "tracer"
 isType = require "isType"
 steal = require "steal"
 Type = require "Type"
@@ -13,44 +8,37 @@ formatObject = require "./formatObject"
 formatValue = require "./formatValue"
 Formatting = require "./Formatting"
 
-type = Type "Formatter", (value, options = {}) ->
-  @_tracer = Tracer "Formatter::call()"
-  try @_format value, options
-  catch error then throwFailure error, stack: @_tracer()
+type = Type "Formatter"
 
 type.defineOptions
   colors: Object
 
-type.defineValues
+type.defineValues (options) ->
 
-  _colors: fromArgs "colors"
+  _colors: options.colors
 
-  _tracer: null
+type.defineFunction (value, options = {}) ->
 
-type.defineMethods
+  if isType options, String
+    options = { label: options }
+  else assertType options, Object
 
-  _format: (value, options) ->
+  raw = steal options, "raw", no
+  label = steal options, "label"
 
-    if isType options, String
-      options = { label: options }
-    else assertType options, Object
+  if @_colors and not options.hasOwnProperty "colors"
+    options.colors = @_colors
 
-    raw = steal options, "raw", no
-    label = steal options, "label"
+  parts = Formatting options
 
-    if @_colors and not options.hasOwnProperty "colors"
-      options.colors = @_colors
+  if label
+    parts.push label
 
-    parts = Formatting options
+  if not formatValue.call parts, value
+    formatObject.call parts, value
 
-    if label
-      parts.push label
-
-    if not formatValue.call parts, value
-      formatObject.call parts, value
-
-    parts = parts.flush()
-    return parts if raw
-    return parts.join ""
+  parts = parts.flush()
+  return parts if raw
+  return parts.join ""
 
 module.exports = type.build()

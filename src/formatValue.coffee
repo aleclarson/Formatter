@@ -1,7 +1,6 @@
 
-require "isNodeJS"
-
 stripAnsi = require "strip-ansi"
+isNodeJS = require "isNodeJS"
 getType = require "getType"
 Null = require "Null"
 Void = require "Void"
