@@ -58,7 +58,7 @@ formatters.push
     @push "red.dim", "NaN"
 
 formatters.push
-  test: (_, type) -> type is Date
+  test: (_, type) -> type.name is "Date"
   format: (value) ->
 
     @push "green.dim.bold", "Date "
