@@ -12,32 +12,33 @@ sync = require "sync"
 
 NEWLINE = if isNodeJS then require("os").EOL else "\n"
 
-propTypes =
-  maxStringLength: Number
-  maxObjectDepth: Number
-  maxObjectKeys: Number
-  maxArrayKeys: Number
-  showInherited: Boolean
-  showHidden: Boolean
-
-propDefaults =
-  maxStringLength: 60
-  maxObjectDepth: 2
-  maxObjectKeys: 30
-  maxArrayKeys: 10
-  showInherited: no
-  showHidden: no
-
 type = Type "Formatting"
 
 type.inherits StrictMap
 
-type.createInstance ->
-  return StrictMap
-    types: propTypes
-    values: propDefaults
+type.createInstance do ->
 
-type.defineOptions
+  propTypes =
+    maxStringLength: Number
+    maxObjectDepth: Number
+    maxObjectKeys: Number
+    maxArrayKeys: Number
+    showInherited: Boolean
+    showHidden: Boolean
+
+  propDefaults =
+    maxStringLength: 60
+    maxObjectDepth: 2
+    maxObjectKeys: 30
+    maxArrayKeys: 10
+    showInherited: no
+    showHidden: no
+
+  return ->
+    StrictMap propTypes
+    .update propDefaults
+
+type.defineArgs
   colors: Boolean.or Object
   compact: Boolean
   collapse: Function
@@ -82,10 +83,8 @@ type.initInstance (options) ->
     options.maxObjectKeys = Infinity
     options.maxArrayKeys = Infinity
 
-  for key, value of options
-    unless propTypes[key]
-      throw Error "'#{key}' is not a valid key!"
-    this[key] = value
+  @freeze()
+  @update options
   return
 
 type.defineMethods

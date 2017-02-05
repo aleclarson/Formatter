@@ -10,7 +10,7 @@ Formatting = require "./Formatting"
 
 type = Type "Formatter"
 
-type.defineOptions
+type.defineArgs
   colors: Object
 
 type.defineValues (options) ->
