@@ -1,7 +1,6 @@
 
 emptyFunction = require "emptyFunction"
 repeatString = require "repeat-string"
-assertType = require "assertType"
 StrictMap = require "StrictMap"
 isNodeJS = require "isNodeJS"
 replace = require "replace"
@@ -12,39 +11,40 @@ sync = require "sync"
 
 NEWLINE = if isNodeJS then require("os").EOL else "\n"
 
-propTypes =
-  maxStringLength: Number
-  maxObjectDepth: Number
-  maxObjectKeys: Number
-  maxArrayKeys: Number
-  showInherited: Boolean
-  showHidden: Boolean
-
-propDefaults =
-  maxStringLength: 60
-  maxObjectDepth: 2
-  maxObjectKeys: 30
-  maxArrayKeys: 10
-  showInherited: no
-  showHidden: no
-
 type = Type "Formatting"
 
 type.inherits StrictMap
 
-type.createInstance ->
-  return StrictMap
-    types: propTypes
-    values: propDefaults
+type.createInstance do ->
 
-type.defineOptions
+  propTypes =
+    maxStringLength: Number
+    maxObjectDepth: Number
+    maxObjectKeys: Number
+    maxArrayKeys: Number
+    showInherited: Boolean
+    showHidden: Boolean
+
+  propDefaults =
+    maxStringLength: 60
+    maxObjectDepth: 2
+    maxObjectKeys: 30
+    maxArrayKeys: 10
+    showInherited: no
+    showHidden: no
+
+  return ->
+    StrictMap propTypes
+    .update propDefaults
+
+type.defineArgs
   colors: Boolean.or Object
   compact: Boolean
   collapse: Function
   unlimited: Boolean
   avoidGetters: Boolean
 
-type.defineValues
+type.defineValues (options) ->
 
   ln: NEWLINE
 
@@ -52,27 +52,23 @@ type.defineValues
 
   keyPath: ""
 
-  compact: (options) ->
-    steal options, "compact", no
+  compact: steal options, "compact", no
 
-  collapse: (options) ->
-    steal options, "collapse", emptyFunction.thatReturnsFalse
+  collapse: steal options, "collapse", emptyFunction.thatReturnsFalse
 
-  avoidGetters: (options) ->
-    steal options, "avoidGetters", no
+  avoidGetters: steal options, "avoidGetters", no
 
-  _parts: -> []
+  _parts: []
 
   _isIndented: no
 
-type.defineFrozenValues
+type.defineFrozenValues (options) ->
 
-  keyPaths: -> []
+  keyPaths: []
 
-  objects: -> []
+  objects: []
 
-  _colors: (options) ->
-    steal options, "colors"
+  _colors: steal options, "colors"
 
 type.initInstance (options) ->
 
@@ -82,10 +78,8 @@ type.initInstance (options) ->
     options.maxObjectKeys = Infinity
     options.maxArrayKeys = Infinity
 
-  for key, value of options
-    unless propTypes[key]
-      throw Error "'#{key}' is not a valid key!"
-    this[key] = value
+  @freeze()
+  @update options
   return
 
 type.defineMethods
