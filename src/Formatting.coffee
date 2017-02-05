@@ -1,7 +1,6 @@
 
 emptyFunction = require "emptyFunction"
 repeatString = require "repeat-string"
-assertType = require "assertType"
 StrictMap = require "StrictMap"
 isNodeJS = require "isNodeJS"
 replace = require "replace"
@@ -45,7 +44,7 @@ type.defineArgs
   unlimited: Boolean
   avoidGetters: Boolean
 
-type.defineValues
+type.defineValues (options) ->
 
   ln: NEWLINE
 
@@ -53,27 +52,23 @@ type.defineValues
 
   keyPath: ""
 
-  compact: (options) ->
-    steal options, "compact", no
+  compact: steal options, "compact", no
 
-  collapse: (options) ->
-    steal options, "collapse", emptyFunction.thatReturnsFalse
+  collapse: steal options, "collapse", emptyFunction.thatReturnsFalse
 
-  avoidGetters: (options) ->
-    steal options, "avoidGetters", no
+  avoidGetters: steal options, "avoidGetters", no
 
-  _parts: -> []
+  _parts: []
 
   _isIndented: no
 
-type.defineFrozenValues
+type.defineFrozenValues (options) ->
 
-  keyPaths: -> []
+  keyPaths: []
 
-  objects: -> []
+  objects: []
 
-  _colors: (options) ->
-    steal options, "colors"
+  _colors: steal options, "colors"
 
 type.initInstance (options) ->
 
