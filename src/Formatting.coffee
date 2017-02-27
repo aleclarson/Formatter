@@ -78,7 +78,6 @@ type.initInstance (options) ->
     options.maxObjectKeys = Infinity
     options.maxArrayKeys = Infinity
 
-  @freeze()
   @update options
   return
 
