@@ -9,7 +9,7 @@ Nan = require "Nan"
 module.exports = (value) ->
   type = getType value
   for { test, format } in formatters
-    if test.call this, value, type
+    if test.call this, value, type or {}
       format.call this, value, type
       return yes
   return no
