@@ -10,27 +10,27 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
-    "Nan": "aleclarson/Nan#1.1.1",
-    "Null": "aleclarson/Null#1.0.1",
-    "PureObject": "aleclarson/PureObject#1.0.1",
-    "StrictMap": "aleclarson/StrictMap#1.1.1",
-    "Type": "aleclarson/Type#2.3.1",
-    "Validator": "aleclarson/Validator#1.1.1",
-    "Void": "aleclarson/Void#1.0.1",
-    "assertType": "aleclarson/assertType#2.0.1",
+    "Nan": "aleclarson/Nan#1.1.2",
+    "Null": "aleclarson/Null#1.0.2",
+    "PureObject": "aleclarson/PureObject#1.0.2",
+    "StrictMap": "aleclarson/StrictMap#1.1.2",
+    "Type": "aleclarson/Type#2.4.0",
+    "Validator": "aleclarson/Validator#1.2.0",
+    "Void": "aleclarson/Void#1.0.2",
+    "assertType": "aleclarson/assertType#2.0.2",
     "emptyFunction": "aleclarson/emptyFunction#1.0.0",
     "getKind": "aleclarson/getKind#1.0.0",
-    "getType": "aleclarson/getType#1.0.1",
+    "getType": "aleclarson/getType#1.0.2",
     "has": "aleclarson/has#1.0.0",
     "hasKeys": "aleclarson/hasKeys#1.0.0",
     "isNodeJS": "aleclarson/isNodeJS#2.0.0",
-    "isType": "aleclarson/isType#1.0.1",
+    "isType": "aleclarson/isType#1.0.2",
     "keymirror": "aleclarson/keymirror#1.0.0",
     "repeat-string": "aleclarson/repeat-string#1.5.4",
     "replace": "aleclarson/replace#1.0.0",
     "steal": "aleclarson/steal#1.2.0",
     "strip-ansi": "3.0.x",
-    "sync": "aleclarson/sync#1.0.2"
+    "sync": "aleclarson/sync#1.0.3"
   },
   "implicitDependencies": [
     "os"
